@@ -5,10 +5,6 @@
 
 Wahoo Chat is an open source and minimal chat UI for Ollama. UI Uses Ollama stream API.
 
-![Model Selector](./screenshots/shoot1.png)
-![Code Highlights](./screenshots/shoot2.png)
-
-
 ## Running Localy
 
 ### 1. Clone Repo
