@@ -146,41 +146,6 @@ const chatBoxScrollBottom = () => {
   }
 };
 
-// const getEmotional = async (text: string) => {
-//   try {
-//     const tokenResponse = await axios.post(
-//         'https://aip.baidubce.com/oauth/2.0/token',
-//         null,
-//         {
-//           params: {
-//             grant_type: 'client_credentials',
-//             client_id: 'kQrc2SjDHCrrakkkOVgeGIce',
-//             client_secret: 'lK31KyHaIHw9XgXLLlYz1VvOpYjWmKL0',
-//           },
-//         }
-//     );
-//     const accessToken = tokenResponse.data.access_token;
-//     console.log('Access Token:', accessToken);
-//
-//     const sentimentResponse = await axios.post(
-//         `https://aip.baidubce.com/rpc/2.0/nlp/v1/sentiment_classify?charset=UTF-8&access_token=${accessToken}`,
-//         {text},
-//         {
-//           headers: {
-//             'Content-Type': 'application/json',
-//             'Accept': 'application/json',
-//             'Access-Control-Allow-Origin': '*',
-//           },
-//         }
-//     );
-//
-//     console.log('Sentiment Analysis:', sentimentResponse.data);
-//     // 你可以根据 sentimentResponse.data 的内容更新你的聊天上下文
-//
-//   } catch (error) {
-//     console.error('Error getting emotional analysis:', error);
-//   }
-// };
 
 const handleQuickPrompt = (qprompt: string) => {
   prompt.value = qprompt;
