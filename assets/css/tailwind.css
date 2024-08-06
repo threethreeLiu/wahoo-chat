@@ -38,6 +38,8 @@
 
 .light-blue {
     color: rgb(135, 206, 250);
+    margin-bottom: 100px;
+    font-size: 72px;
 }
 
 .user {
@@ -90,61 +92,50 @@
 .assistant-content {
     padding: 20px;
 }
+
 .grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px; /* 调整间距以适应动画效果 */
-  margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px; /* 增大间距 */
+    margin-top: 20px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .grid > div {
-  border: 1px solid #d1d5db; /* gray-300 */
-  padding: 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative; /* 使动画效果生效 */
-  animation: float 5s ease-in-out infinite; /* 添加动画效果 */
-}
-
-/* 杂乱分布效果 */
-.grid > div:nth-child(odd) {
-  transform: translateX(10px) rotate(2deg);
-}
-
-.grid > div:nth-child(even) {
-  transform: translateX(-10px) rotate(-2deg);
-}
-
-.grid > div:nth-child(3n) {
-  transform: translateY(15px) rotate(1deg);
+    display: flex; /* 使用 Flexbox 布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    text-align: center; /* 文本居中 */
+    border: 1px solid #d1d5db;
+    padding: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    animation: float 5s ease-in-out infinite;
 }
 
 .grid > div:hover {
-  border-color: #4b5563; /* gray-600 */
-  transform: scale(1.1); /* 鼠标移上去时稍微放大 */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-color: #4b5563;
+    transform: scale(1.8);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
 }
 
 /* 浮动动画 */
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0); /* 初始和结束位置 */
-  }
-  50% {
-    transform: translateY(-20px); /* 中间位置，向上移动20px */
-  }
-}
-
-/* 动画延迟效果 */
-.grid > div:nth-child(odd) {
-  animation-delay: 0s;
-}
-
-.grid > div:nth-child(even) {
-  animation-delay: 1s;
-}
-
-.grid > div:nth-child(3n) {
-  animation-delay: 2s;
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    75% {
+        transform: translateX(20px);
+    }
+    30% {
+        transform: translateX(-20px);
+    }
 }
