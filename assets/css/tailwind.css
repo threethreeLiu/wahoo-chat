@@ -49,7 +49,7 @@
 
 .assistant {
     display: flex;
-    color:black;
+    color: black;
     width: 70%;
 }
 
@@ -88,5 +88,63 @@
 }
 
 .assistant-content {
+    padding: 20px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; /* 调整间距以适应动画效果 */
+  margin-top: 10px;
+}
+
+.grid > div {
+  border: 1px solid #d1d5db; /* gray-300 */
   padding: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* 使动画效果生效 */
+  animation: float 5s ease-in-out infinite; /* 添加动画效果 */
+}
+
+/* 杂乱分布效果 */
+.grid > div:nth-child(odd) {
+  transform: translateX(10px) rotate(2deg);
+}
+
+.grid > div:nth-child(even) {
+  transform: translateX(-10px) rotate(-2deg);
+}
+
+.grid > div:nth-child(3n) {
+  transform: translateY(15px) rotate(1deg);
+}
+
+.grid > div:hover {
+  border-color: #4b5563; /* gray-600 */
+  transform: scale(1.1); /* 鼠标移上去时稍微放大 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 浮动动画 */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0); /* 初始和结束位置 */
+  }
+  50% {
+    transform: translateY(-20px); /* 中间位置，向上移动20px */
+  }
+}
+
+/* 动画延迟效果 */
+.grid > div:nth-child(odd) {
+  animation-delay: 0s;
+}
+
+.grid > div:nth-child(even) {
+  animation-delay: 1s;
+}
+
+.grid > div:nth-child(3n) {
+  animation-delay: 2s;
 }
