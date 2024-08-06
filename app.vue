@@ -22,23 +22,28 @@
 
           <div class="grid grid-cols-3 gap-5 mt-10">
             <div
-              class="border border-gray-300 p-5 rounded-lg cursor-pointer hover:border-gray-600 ice"
-              v-for="item in helpTextList"
-              @click="handleQuickPrompt(item)"
+                class="border border-gray-300 p-5 rounded-lg cursor-pointer hover:border-gray-600"
+                v-for="item in helpTextList"
+                @click="handleQuickPrompt(item)"
             >
               {{ item }}
             </div>
           </div>
         </div>
 
-        <ul class="space-y-2" v-else>
-          <li class="glass-container box" v-for="chat in chatContext">
-            <h1 class="font-bold relative" v-if="chat.role === 'user'">You</h1>
-            <h1 class="font-bold" v-else>Wahoo</h1>
-            <markdown-render :content="chat.content"/>
-          </li>
+        <div class="space-y-2" v-else>
+          <div v-for="chat in chatContext">
+            <div v-if="chat.role === 'user'" :class="chat.role">
+              <markdown-render :class="chat.role+'-content'" :content="chat.content"/>
+              <h1 :class="chat.role+'-title'">You</h1>
+            </div>
+            <div v-else :class="chat.role">
+              <h1 :class="chat.role+'-title'"></h1>
+              <markdown-render :content="chat.content" :class="chat.role+'-content'"/>
+            </div>
+          </div>
 
-          <li class="box" v-if="loadingAnswer || aiAnswer">
+          <div class="box" v-if="loadingAnswer || aiAnswer">
             <div v-if="loadingAnswer">
               <div class="flex">
                 <h1 class="font-black">Wahoo</h1>
@@ -62,12 +67,12 @@
                 </span>
               </div>
             </div>
-            <div v-else v-if="aiAnswer" >
+            <div v-else v-if="aiAnswer">
               <h1 class="font-bold">Wahoo</h1>
               <markdown-render :content="aiAnswer"/>
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
       <div>
         <prompter v-model="prompt" @submit="handleSend"/>
@@ -96,9 +101,9 @@ const {
 } = useChatContext<IChatContext>();
 
 const helpTextList = reactive([
-  "implement http server with golang",
-  "generate red button with tailwind css",
-  "implement http request with javascript",
+  "I am very unhappy today",
+  "I feel very depressed today",
+  "I'm very anxious today",
 ]);
 
 const handleSend = async () => {
@@ -110,8 +115,6 @@ const handleSend = async () => {
     role: "user",
     content: prompt.value,
   });
-
-  // let a = await getEmotional(prompt.value);
 
 
   fetch(`/api/chat?model=${selectedModel.value}`, {

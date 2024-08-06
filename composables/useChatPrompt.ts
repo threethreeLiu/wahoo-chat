@@ -3,7 +3,7 @@ export function useChatContext<T>() {
   const aiAnswer = ref("");
   const chatContext = ref<T[]>([]) as Ref<T[]>;
   const loadingAnswer = ref<boolean>(false);
-  const selectedModel = ref("Autodl-Tmp-620M-F16.gguf:fp16");
+  const selectedModel = ref("qwen2:latest");
 
   const resetPrompt = () => {
     prompt.value = "";

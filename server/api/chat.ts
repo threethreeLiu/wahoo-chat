@@ -6,7 +6,7 @@ export default eventHandler(async (event) => {
   const messages = JSON.parse(chatContextString);
 
   const response = await ollama.chat({
-    model: query["model"]?.toString() ?? "llama2:latest",
+    model: query["model"]?.toString() ?? "qwen2:latest",
     messages: messages,
     stream: true,
   });
