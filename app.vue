@@ -35,10 +35,14 @@
           <div v-for="chat in chatContext">
             <div v-if="chat.role === 'user'" :class="chat.role">
               <markdown-render :class="chat.role+'-content'" :content="chat.content"/>
-              <h1 :class="chat.role+'-title'">You</h1>
+             <div>
+                <h1 :class="chat.role+'-title'"></h1>
+             </div>
             </div>
             <div v-else :class="chat.role">
-              <h1 :class="chat.role+'-title'"></h1>
+              <div>
+                 <h1 :class="chat.role+'-title'"></h1>
+              </div>
               <markdown-render :content="chat.content" :class="chat.role+'-content'"/>
             </div>
           </div>
@@ -101,9 +105,15 @@ const {
 } = useChatContext<IChatContext>();
 
 const helpTextList = reactive([
-  "I am very unhappy today",
-  "I feel very depressed today",
-  "I'm very anxious today",
+  "How to avoid feeling inferior.",
+  "I feel very depressed today.",
+  "I always feel like there's a voice talking to me.",
+  "I lack motivation for anything.",
+  "My relationship with my family is strained.",
+  "I need ways to reduce my anxiety.",
+  "I’m not satisfied with myself.",
+  "I’m constantly anxious.",
+  "Is being sentimental a disease?",
 ]);
 
 const handleSend = async () => {
